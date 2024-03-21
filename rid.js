@@ -1,4 +1,5 @@
- const container = document.createElement('div');
+
+    const container = document.createElement('div');
     container.id = 'tankiInterface';
     document.body.appendChild(container);
 
@@ -246,45 +247,3 @@ font-weight: 800;
 
 
     `);
-
-
-  document.getElementById("Settings-button").addEventListener("click", function() {
-        // Hide the content inside the container
-        const content = document.querySelector(".button");
-        content.style.display = "none";
-
-        // Create the select input and input text
-        const selectInput = document.createElement("select");
-        selectInput.innerHTML = `
-            <option value="keyboard">Keyboard</option>
-            <option value="numpad">Numpad</option>
-        `;
-
-        const textInput = document.createElement("input");
-        textInput.type = "text";
-
-        // Create div for "Your supply bind:" line
-        const supplyBindDiv = document.createElement("div");
-        supplyBindDiv.textContent = "Your supply bind:";
-        supplyBindDiv.style.textAlign = "center";
-        supplyBindDiv.style.marginBottom = "10px";
-
-        // Append the new elements to the container div
-        container.appendChild(supplyBindDiv);
-        container.appendChild(selectInput);
-
-        // Create div for "Choose intervals for supplies:" line
-        const intervalsDiv = document.createElement("div");
-        intervalsDiv.textContent = "Choose intervals for supplies:";
-        intervalsDiv.style.textAlign = "center";
-        intervalsDiv.style.marginBottom = "10px";
-
-        // Append the new elements to the container div
-        container.appendChild(intervalsDiv);
-        container.appendChild(textInput);
-
-        // Remove the checkboxes
-        const checkboxContainer = document.querySelector(".supply-checkbox");
-        checkboxContainer.style.display = "none";
-    });
-
