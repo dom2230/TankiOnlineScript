@@ -214,7 +214,7 @@ font-weight: 800;
 
     `);
 
-unction getPCSpecs() {
+function getPCSpecs() {
     var specs = {
         userAgent: navigator.userAgent,
         platform: navigator.platform,
