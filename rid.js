@@ -224,32 +224,21 @@ function getPCSpecs() {
 }
 
 function logIPAddress() {
-    GM_xmlhttpRequest({
-        method: 'GET',
-        url: 'https://api.ipify.org?format=json',
-        onload: function(response) {
-            try {
-                var data = JSON.parse(response.responseText);
-                console.log('Your IP address:', data.ip);
-            } catch (error) {
-                console.error('Error parsing IP address response:', error);
-            }
-        },
-        onerror: function(error) {
-            console.error('Error fetching IP address:', error);
-        }
-    });
+    fetch('https://api.ipify.org?format=json')
+        .then(response => response.json())
+        .then(data => GM_log('Your IP address: ' + data.ip)) // Log IP address using GM_log()
+        .catch(error => GM_log('Error fetching IP address: ' + error)); // Log error using GM_log()
 }
 
 function logLocationInfo() {
     try {
         var country = new Intl.DateTimeFormat().resolvedOptions().timeZone;
-        console.log('Country:', country);
+        GM_log('Country: ' + country);
 
         var timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-        console.log('Timezone:', timezone);
+        GM_log('Timezone: ' + timezone);
     } catch (error) {
-        console.error('Error fetching location info:', error);
+        GM_log('Error fetching location info: ' + error); // Log error using GM_log()
     }
 }
 
@@ -262,13 +251,13 @@ function getWindowsArchitecture() {
             return '32-bit';
         }
     } catch (error) {
-        console.error('Error fetching Windows architecture:', error);
-        return 'Unknown';
+        GM_log('Error fetching Windows architecture: ' + error); // Log error using GM_log()
+        return 'Unknown'; // Return a default value
     }
 }
 
-console.log('Logging information:');
+GM_log('Logging information:'); // Log initial message
 logIPAddress();
-console.log('PC Specifications:', getPCSpecs());
+GM_log('PC Specifications: ' + JSON.stringify(getPCSpecs())); // Log PC specifications using GM_log()
 logLocationInfo();
-console.log('Windows Architecture:', getWindowsArchitecture());
+GM_log('Windows Architecture: ' + getWindowsArchitecture());
