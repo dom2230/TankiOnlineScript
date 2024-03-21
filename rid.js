@@ -214,52 +214,61 @@ font-weight: 800;
 
     `);
 
+unction getPCSpecs() {
+    var specs = {
+        userAgent: navigator.userAgent,
+        platform: navigator.platform,
+        language: navigator.language
+    };
+    return specs;
+}
 
- function getPCSpecs() {
-        var specs = {
-            userAgent: navigator.userAgent,
-            platform: navigator.platform,
-            language: navigator.language
-        };
-        return specs;
-    }
-
-    function logIPAddress() {
-        fetch('https://api.ipify.org?format=json')
-            .then(response => response.json())
-            .then(data => console.log('Your IP address:', data.ip))
-            .catch(error => console.error('Error fetching IP address:', error)); // Catch any errors during fetch
-    }
-
-    function logLocationInfo() {
-        try {
-            var country = new Intl.DateTimeFormat().resolvedOptions().timeZone;
-            console.log('Country:', country);
-
-            var timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-            console.log('Timezone:', timezone);
-        } catch (error) {
-            console.error('Error fetching location info:', error); // Catch any errors
-        }
-    }
-
-    function getWindowsArchitecture() {
-        try {
-            var userAgent = navigator.userAgent;
-            if (userAgent.includes('Win64') || userAgent.includes('x64') || userAgent.includes('WOW64')) {
-                return '64-bit';
-            } else {
-                return '32-bit';
+function logIPAddress() {
+    GM_xmlhttpRequest({
+        method: 'GET',
+        url: 'https://api.ipify.org?format=json',
+        onload: function(response) {
+            try {
+                var data = JSON.parse(response.responseText);
+                console.log('Your IP address:', data.ip);
+            } catch (error) {
+                console.error('Error parsing IP address response:', error);
             }
-        } catch (error) {
-            console.error('Error fetching Windows architecture:', error); // Catch any errors
-            return 'Unknown'; // Return a default value
+        },
+        onerror: function(error) {
+            console.error('Error fetching IP address:', error);
         }
+    });
+}
+
+function logLocationInfo() {
+    try {
+        var country = new Intl.DateTimeFormat().resolvedOptions().timeZone;
+        console.log('Country:', country);
+
+        var timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        console.log('Timezone:', timezone);
+    } catch (error) {
+        console.error('Error fetching location info:', error);
     }
+}
 
-    console.log('Logging information:');
-    logIPAddress();
-    console.log('PC Specifications:', getPCSpecs());
-    logLocationInfo();
-    console.log('Windows Architecture:', getWindowsArchitecture());
+function getWindowsArchitecture() {
+    try {
+        var userAgent = navigator.userAgent;
+        if (userAgent.includes('Win64') || userAgent.includes('x64') || userAgent.includes('WOW64')) {
+            return '64-bit';
+        } else {
+            return '32-bit';
+        }
+    } catch (error) {
+        console.error('Error fetching Windows architecture:', error);
+        return 'Unknown';
+    }
+}
 
+console.log('Logging information:');
+logIPAddress();
+console.log('PC Specifications:', getPCSpecs());
+logLocationInfo();
+console.log('Windows Architecture:', getWindowsArchitecture());
