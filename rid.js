@@ -67,13 +67,13 @@
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
-    opacity: 0.9;
 
-box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-backdrop-filter: blur( 4px );
--webkit-backdrop-filter: blur( 4px );
-border-radius: 10px;
-border: 1px solid rgba( 255, 255, 255, 0.18 );
+box-shadow: 0px 0px 10px rgba(0,0,0,.6);
+backdrop-filter: blur(5px);
+-webkit-backdrop-filter: blur(4px);
+border-radius: 15px;
+border: 2px solid rgba( 255, 255, 255, 0.18);
+background-color: rgba(0, 0, 0, 0.25);
 }
 
 .supply-checkbox {
@@ -92,15 +92,14 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
     width: 30px;
     height: 30px;
     margin-bottom: 5px;
-    border-radius: 4px;
-  outline: 1px grey;
-  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    border-radius: 6px;
+    background-color: rgba(0, 0, 0, 0.25);
+ border: 2px solid rgba( 255, 255, 255, 0.16);
+  box-shadow: 0px 0px 10px rgba(0,0,0,.6);
   cursor: pointer;
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
- background-color: whitesmoke;
- border: 1px solid #aaa;
  animation: lightning 1.5s infinite;
 }
 
@@ -146,57 +145,24 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
 .buttons-row-1 button, .buttons-row-2 button, .buttons-row-3 button {
     height: 100%;
     width: 40%;
-    background-color: #222222;
-cursor: pointer;
-
-
-    box-shadow: 0 0 4px var(--clr);
-
+    background: rgb(0 0 0/30%);
+     cursor: pointer;
+    box-shadow: 0px 0px 10px rgba(0,0,0,.6);
     border-radius: 12px;
-    border: 2px transparent;
-        transition: 0.5s;
-        color: white;
+    border: 2px solid rgba(255, 255, 255, 0.16);
+      transition: box-shadow 0.5s linear !important;
+
+       color: white;
 font-weight: 800;
-    animation: flow 0.8s infinite alternate;
+
 
 
 }
 
-
-  @keyframes flow {
-    0% {
-        color: rgba(30, 155, 255, 1);
-        text-shadow: 0 0 5px rgba(30, 155, 255, 0.8);
-    }
-    100% {
-        color: rgba(46, 194, 231, 0.7);
-        text-shadow: 0 0 10px rgba(30, 155, 255, 0.8);
-    }
-}
-
-
-
-
-
-
-
-
-
-@keyframes lightning {
-  0% {
-    box-shadow: 0 0 5px 2px rgba(30, 155, 255, 0.7);
-  }
-  50% {
-    box-shadow: 0 0 10px 4px rgba(30, 155, 255, 0.7);
-  }
-  100% {
-    box-shadow: 0 0 5px 2px rgba(30, 155, 255, 0.7);
-  }
-}
 
 .buttons-row-1 button:hover, .buttons-row-2 button:hover, .buttons-row-3 button:hover {
-    background-color: #222222;
-    box-shadow: 0 0 42px var(--clr);
+
+   box-shadow: rgb(255, 255, 255) 0em 0em 0em 0.05em !important;
 }
 
 .button{
@@ -211,12 +177,12 @@ font-weight: 800;
 
 @keyframes fire {
   0% {
-    color: rgba(30, 155, 255, 0.1);
-    text-shadow: 0 0 5px rgba(30, 155, 255, 0.3), 0 0 10px rgba(30, 155, 255, 0.3), 0 0 20px rgba(30, 155, 255, 0.3);
+    color: rgba(30, 155, 255, 0.1); /* Light blue */
+    text-shadow: 0 0 5px rgba(30, 155, 255, 0.3), 0 0 10px rgba(30, 155, 255, 0.3), 0 0 20px rgba(30, 155, 255, 0.3); /* Shadow effect */
   }
   100% {
-    color: rgba(30, 155, 255, 0.5);
-    text-shadow: 0 0 5px rgba(30, 155, 255, 0.7), 0 0 10px rgba(30, 155, 255, 0.7), 0 0 20px rgba(30, 155, 255, 0.7);
+    color: rgba(30, 155, 255, 0.5); /* Light blue with more opacity */
+    text-shadow: 0 0 5px rgba(30, 155, 255, 0.7), 0 0 10px rgba(30, 155, 255, 0.7), 0 0 20px rgba(30, 155, 255, 0.7); /* Shadow effect with more opacity */
   }
 }
 
@@ -227,9 +193,12 @@ font-weight: 800;
     width: 150px;
     margin-left: auto;
     margin-right: auto;
- background-color: rgba(30, 155, 255, 0.1);
-  border: 1px solid rgba(128, 128, 128, 0.5);
-  border-radius: 5px; /* Border radius */
+ background-color: rgba(0, 0, 0, 0.1);
+
+   box-shadow: 0px 0px 10px rgba(0,0,0,.65);
+
+  border: 2px solid rgba(255, 255, 255, 0.17);
+  border-radius: 15px; /* Border radius */
   padding: 5px; /* Add some padding */
   text-align: center; /* Center the text horizontally */
   color: white;
@@ -237,13 +206,11 @@ font-weight: 800;
   font-weight: 900;
 }
 
+/* Adjust hover effect */
 .button input[type="text"]:hover {
-  background-color: rgba(30, 155, 255, 0.2);
-}
-
-.button input[type="text"]:focus {
   background-color: rgba(30, 155, 255, 0.2);
 }
 
 
     `);
+
